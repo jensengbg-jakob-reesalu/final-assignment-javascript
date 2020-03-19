@@ -1,4 +1,3 @@
-
 document.querySelector("#search-btn").addEventListener("click", async () => {
     let searchValue = await document.querySelector("#search-field").value; 
     let photosData = await getPhotosData(searchValue);
@@ -13,17 +12,15 @@ document.querySelector("#search-btn").addEventListener("click", async () => {
 // }
 
 function displayPhotos(array) {
-    for(i = 0; array.length; i++) {
+    for(i = 0; i < array.length; i++) {
+        console.log("************i is now************: ", i);
         let farm = array[i].farm;
         let server = array[i].server;
         let id = array[i].id;
         let secret = array[i].secret;
         
-        console.log(farm, server, id, secret);
-        document.getElementById("images-wrapper").addEventListener("click", () => {
-            console.log("hej")});
+        document.querySelector("#images-wrapper").innerHTML += `<img src=https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg}>`;
     }
-    // `<img src=https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg}>`
 }
 
 function extractPhotos(dataObject) {
