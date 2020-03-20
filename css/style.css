@@ -1,0 +1,95 @@
+body {
+   width: 100vw; 
+   margin: 0;
+  }
+
+#search-area {
+    width: 100vw;
+    height: 50vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url(https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=721&q=80);
+    background-size: cover;
+}
+
+#search-area h1 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    color: white;
+    text-shadow: 3px 3px 4px black;
+}
+
+#search-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+}
+
+#search-btn {
+    height: 100%;
+    border: 0;
+    padding: 0 .6rem;
+    background: floralwhite;
+    box-shadow: 3px 3px 5px black;
+    outline: none;
+}
+
+#search-input {
+    height: 100%;
+    width: 50%;
+    padding: 0 0 0 1rem;
+    border: 0;
+    align-self: center;
+    background: rgba(255, 255, 255, .3);
+    box-shadow: 3px 3px 5px black;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: hotpink;
+    text-shadow: 1px 1px 1px white;
+    outline: none;
+    
+}
+
+#search-input::placeholder {
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: white;
+    text-shadow: 0 0 0;
+}
+
+#select-wrapper {
+    display: flex;
+    width: 105px;
+    font-family: arial;
+    font-size: 0.75rem;
+    margin-top: 0rem;
+    position: relative;
+    bottom: 12%;
+}
+
+#select-menu {
+    outline: none;
+}
+
+#select-wrapper p {
+    margin: 2px 5px 0 0; 
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+#images-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+img {
+    margin: 1rem;
+}
+

@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=“UTF-8”>
-        <meta name=“viewport” content=“width=device-width, initial-scale=1.0”>
-        <link rel=“stylesheet” href=“css/stylesheet.css”>
-        <title>Final assignment JavaScript</title>
-    </head>
-    <body>
-        <main>
-            <button id="search-btn">
-                SEARCH
-            </button>
-            <input type=“text” placeholder=photos id="search-field">
-            <input type=“text” placeholder="per_page" id="page-field">
-            <section id="images-wrapper"></section>
-        </main>
-    </body>
 
-    <script src="js/index.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+        <article id="search-area">
+            <h1>Take your pick!</h1>
+            <section id="search-wrapper">
+                <input type=“text” placeholder="Enter text..." id="search-input">
+                <button id="search-btn">SEARCH</button>
+            </section>
+                        <section id="select-wrapper">
+                            <p>Per page</p>
+                            <select id="select-menu">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </section>
+        </article>
+        <section id="images-wrapper"></section>
+    </main>
+</body>
+
+<script src="js/index.js"></script>
+
 </html>
