@@ -1,15 +1,36 @@
 document.querySelector("#search-btn").addEventListener("click", async () => {
     let searchValue = await document.querySelector("#search-field").value; 
-    let photosData = await getPhotosData(searchValue);
+    let pageValue = await document.querySelector("#page-field").value; 
+    
+    let photosData = await getPhotosData(searchValue, pageValue);
     let photos = await extractPhotos(photosData);
     await displayPhotos(photos);
 })
 
-// function loopPhotosData(array) {
-//     for (i = 0; i < array.length-1; i++) {
-//         extractPhotos(array[i]);   
-//     }
-// }
+async function getPhotosData(tagsValue, perPageValue) {
+    let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=19d3e6e0acfe9c438f368e2c2bab1c5d&tags=${tagsValue}&per_page=${perPageValue}&format=json&nojsoncallback=1`;
+
+    try {
+        let response = await fetch(url);
+        console.log(response);
+        let data = await response.json();
+        console.log("This is data: ", data);
+        return data;
+    } catch (error) {
+        console.log("ERROR IS THIS: ", error);
+    }
+}
+
+function extractPhotos(dataObject) {
+    let photosArray = [];
+    console.log("dataObject in extractPhotos: ", dataObject);
+    console.log("dataObject.photos.photo: ", dataObject.photos.photo);
+    for (i = 0; i < dataObject.photos.photo.length; i++) {
+        console.log(dataObject.photos.photo[i]);
+        photosArray.push(dataObject.photos.photo[i]); 
+    }
+    return photosArray;
+}
 
 function displayPhotos(array) {
     for(i = 0; i < array.length; i++) {
@@ -18,39 +39,10 @@ function displayPhotos(array) {
         let server = array[i].server;
         let id = array[i].id;
         let secret = array[i].secret;
-        
+
         document.querySelector("#images-wrapper").innerHTML += `<img src=https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg}>`;
     }
 }
-
-function extractPhotos(dataObject) {
-    let photosArray = [];
-    console.log("dataObject in extractPhotos: ", dataObject);
-    console.log("dataObject.photos: ", dataObject.photos.photo);
-    for (i = 0; i < dataObject.photos.photo.length; i++) {
-        console.log(dataObject.photos.photo[i]);
-        photosArray.push(dataObject.photos.photo[i]); 
-    }
-    return photosArray;
-}
-
-async function getPhotosData(tagsValue, perPageValue) {
-    let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3c3f8e9aca23972524acea0d266fe266&tags=${tagsValue}&per_page=3&format=json&nojsoncallback=1`;
-
-    try {
-        let response = await fetch(url);
-        console.log(response);
-        let data = await response.json();
-        return data;
-    } catch (error) {
-        console.log("ERROR IS THIS: ", error);
-    }
-}
-
-
-
-// https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=19d3e6e0acfe9c438f368e2c2bab1&tags=flower&per_page=3&format=rest
-
 
 
 
