@@ -1,20 +1,44 @@
 body {
    width: 100vw; 
-   margin: 0;
-  }
+   margin: 0;   
+}
 
 #search-area {
-    width: 100vw;
-    height: 50vh;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 40.5%;
     margin: 0;
+    background-image: url(https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=721&q=80);
+    background-size: cover;
+    box-shadow: 0 1px 8px 4px black;
+}
+
+#article-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-image: url(https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=721&q=80);
-    background-size: cover;
-    box-shadow: 0 1px 8px 4px;
 }
+
+main {
+    min-height: 50vh;
+    background-image: url(https://images.unsplash.com/photo-1515895309288-a3815ab7cf81?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);
+    background-size: 100vw;
+    background-repeat: repeat-y;
+}
+
+footer {
+    height: 20vh;
+    box-shadow: 0 -1px 8px black;
+    background-image: url(https://images.unsplash.com/22/brick-wall.JPG?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+}
+
 
 #search-area h1 {
     margin: 0;
@@ -67,21 +91,19 @@ body {
     text-shadow: 0 0 0;
 }
 
-#select-wrapper {
+#per-page-wrapper {
     display: flex;
     width: 105px;
     font-family: arial;
     font-size: 0.75rem;
     margin-top: 0rem;
-    position: relative;
-    bottom: 12%;
 }
 
-#select-menu {
+#per-page-input {
     outline: none;
 }
 
-#select-wrapper p {
+#per-page-wrapper p {
     margin: 2px 5px 0 0; 
     color: white;
     text-shadow: 2px 2px 2px black;
@@ -91,28 +113,30 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
-    height: 100vh;
     width: 100vw;
+    padding-bottom: 1rem;
 }
+
+
+
 
 
 /* CREATED IN JAVASCRIPT */
 .img-container {
-    height: 40%;
-    width: 30%;
-
+    width: 25%;
+    height: 0;
+    position: relative;
+    padding-bottom: 25%; /* For aspect-ratio trick! */
     margin: 1rem;
     border-radius: 18px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
 }
 
 .img-container img {
+    position: absolute;    
     object-fit: cover;
     height: 100%;
     width: 100%;
-    /* height: inherit;
-    width: inherit; */
     border-radius: 10px;
     cursor: pointer;
 }
@@ -143,7 +167,58 @@ body {
 
 
 /* MEDIA QUERIES */
-@media screen and (max-width: 363px) {
+
+
+
+@media screen and (max-width: 474px) {
+    #images-wrapper {
+        padding-top: 0.5rem;
+    }
+     .img-container { 
+         width: 40%; 
+         padding-bottom: 40%;
+         margin: 0.5rem;
+     }
+} 
+
+@media screen and (min-width: 475px) and (max-width: 700px) {
+   #images-wrapper {
+       padding-top: 0.5rem;
+   }
+    .img-container {
+         width: 30%; 
+         padding-bottom: 30%;
+         margin: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    #images-wrapper {
+        padding-top: 1rem;
+    }
+    
+    .img-container {
+         width: 20%; 
+         padding-bottom: 20%;
+         margin: 0.5rem;
+    }
+}
+/* 
+@media screen and (min-width: 1201px) {
+    #images-wrapper {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .img-container {
+        height: 35%;
+        width: 20%;   
+        margin: 1rem;
+    }
+}  */
+
+
+/* --------------------------------------------- */
+/* @media screen and (max-width: 363px) {
     #images-wrapper {
         margin-top: 0.5rem;
     }
@@ -152,9 +227,9 @@ body {
          width: 40%; 
          margin: 0.5rem;
      }
-}
+} */
 
-@media screen and (min-width: 364px) and (max-width: 450px) {
+/* @media screen and (min-width: 364px) and (max-width: 450px) {
    #images-wrapper {
        margin-top: 0.5rem;
    }
@@ -194,7 +269,10 @@ body {
         width: 20%;   
         margin: 1rem;
     }
-}
+} */
+
+
+/* --------------------------------------------- */
 
 /* @media screen and (max-width: 363px) {
     #images-wrapper {

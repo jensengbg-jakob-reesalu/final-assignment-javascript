@@ -8,7 +8,7 @@ images.forEach((image) => {
     image.addEventListener("click", () => {
         lightbox.classList.add("active");
         let lightboxImage = document.createElement("img");
-        lightboxImage.src = image.src;
+        lightboxImage.src = image.src.replace("_m.jpg", "_b.jpg"); /* lightboxImage gets greater resolution */
         if (lightbox.firstChild) {
             lightbox.removeChild(lightbox.firstChild);
         };
@@ -31,7 +31,7 @@ lightbox.addEventListener("click", (event) => {
 document.querySelector("#search-btn").addEventListener("click", async () => {
     document.querySelector("#images-wrapper").innerHTML = "";
     let searchValue = await document.querySelector("#search-input").value; 
-    let pageValue = await document.querySelector("#select-menu").value; 
+    let pageValue = await document.querySelector("#per-page-input").value; 
     let photosData = await getPhotosData(searchValue, pageValue);
     let photos = await extractPhotos(photosData);
     await displayPhotos(photos);
@@ -44,14 +44,17 @@ document.querySelector("#search-input").addEventListener("keyup", (event) => {
         document.querySelector("#search-btn").click();
     }
 });
+document.querySelector("#per-page-input").addEventListener("keyup", (event) => {
+    if (event.keyCode === 13) {
+        document.querySelector("#search-btn").click();
+    }
+});
 
 async function getPhotosData(tagsValue, perPageValue) {
     let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=19d3e6e0acfe9c438f368e2c2bab1c5d&tags=${tagsValue}&per_page=${perPageValue}&format=json&nojsoncallback=1`;
     try {
         let response = await fetch(url);
-        console.log(response);
         let data = await response.json();
-        console.log("This is data: ", data);
         return data;
     } catch (error) {
         console.log("ERROR IS THIS: ", error);
@@ -60,24 +63,23 @@ async function getPhotosData(tagsValue, perPageValue) {
 
 function extractPhotos(dataObject) {
     let photosArray = [];
-    console.log("dataObject in extractPhotos: ", dataObject);
-    console.log("dataObject.photos.photo: ", dataObject.photos.photo);
     for (i = 0; i < dataObject.photos.photo.length; i++) {
-        console.log(dataObject.photos.photo[i]);
         photosArray.push(dataObject.photos.photo[i]); 
     };
+    console.log("photosArray length: ", photosArray.length);
     return photosArray;
 };
 
 function displayPhotos(array) {
-    for(i = 0; i < array.length; i++) {
-        console.log("************i is now************: ", i);
+    console.log("array length is: ", array.length);
+    for (i = 0; i < array.length; i++) {
+        // console.log("************i is now************: ", i);
         let farm = array[i].farm;
         let server = array[i].server; 
         let id = array[i].id;
         let secret = array[i].secret;
 
-        document.querySelector("#images-wrapper").innerHTML += `<div class="img-container"> <img src=https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_b.jpg}></div>`;
+        document.querySelector("#images-wrapper").innerHTML += `<div class="img-container"> <img src=https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_m.jpg}></div>`;
     };
 };
 
@@ -116,3 +118,33 @@ function displayPhotos(array) {
 // Inlämning sker via Github och Learnpoint. Ladda upp ditt projekt på Github. Gå sedan in på Learnpoint och under innehåll finns det en inlämningsuppgift där du ska posta din länk till ditt repo. Ifall du behöver hjälp med Github så fråga på lektionen!
 
 // **Inlämning senast**: 25/3 23:59
+
+
+
+// 1. https://www.flickr.com/services/rest/
+
+// 2. ? - signlarerar att man väljer en metod
+
+// 3. method=flickr.photos.search
+
+//    4. & - signalerar att man väljer en "funktion" i metoden
+
+//     5. api_key=19d3e6e0acfe9c438f368e2c2bab1c5d
+    
+//     6. & - signalerar att man väljer EN TILL "funktion" i metoden
+    
+//     7. tags=${tagsValue}
+    
+//     8. &
+    
+//     9. per_page=${perPageValue}
+    
+//     10. &
+    
+//     11. format=json
+    
+//     12. &
+    
+//     13. nojsoncallback=1
+
+    // https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=19d3e6e0acfe9c438f368e2c2bab1c5d&tags=${tagsValue}&per_page=${perPageValue}&format=json&nojsoncallback=1

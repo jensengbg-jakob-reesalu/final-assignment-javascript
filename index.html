@@ -8,25 +8,30 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <main>
+    <header>
         <article id="search-area">
-            <h1>Take your pick!</h1>
-            <section id="search-wrapper">
-                <input type=“text” placeholder="Enter text..." id="search-input">
-                <button id="search-btn">SEARCH</button>
-            </section>
-            <section id="select-wrapper">
-                <p>Per page</p>
-                <select id="select-menu">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-            </section>
+            <div id="article-content">
+                <h1>Take your pick!</h1>
+                <section id="search-wrapper">
+                    <input type=“text” placeholder="Enter text..." id="search-input">
+                    <button id="search-btn">SEARCH</button>
+                </section>
+                <section id="per-page-wrapper">
+                    <p>Per page</p>
+                    <select id="per-page-input">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </section>
+            </div>
         </article>
+    </header>
+    <main>
         <section id="images-wrapper"></section>
     </main>
 </body>
